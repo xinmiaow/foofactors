@@ -21,7 +21,7 @@ a <- factor(c("character", "hits", "your", "eyeballs"))
 b <- factor(c("but", "integer", "where it", "counts"))
 ```
 
-Simply catenating two factors leads to a result that most don't expect.
+Simply concatenating two factors leads to a result that most don't expect.
 
 ```{r}
 c(a, b)
@@ -47,3 +47,36 @@ The `freq_out()` function returns a frequency table as a well-named `tbl_df`:
 ```{r}
 freq_out(x)
 ```
+
+Sometimes, character is read as a factor in a wrong way. The unique values of a factor tends to be different from its length; whereas the unique values of character is equal to its length To detect the factor which are supposed to be character, I develop a function `detect_fct()`. 
+
+```{r}
+c <- as.factor(c("yes", "yes", "no", "yes"))
+detect_fct(c) #return TRUE
+```
+
+```{r}
+d <- as.factor(c("Apple", "Banana", "Orange", "Cherry"))
+detect_fct(d) #return FALSE
+```
+
+To reorder a factor in a decreasing order, I develop function `reorder()`. 
+
+```{r}
+e <- as.factor(c(21,23,45,64,12,22,3, 4, 4, 4, 4))
+levels(e)
+```
+
+```{r}
+reorder(e)
+```
+
+
+Usually, we merely want to encode a vector of data as a factor with the order in which they appear in the data. Hence, based on `factor`, I develop a function `factor_asis()`. By `factor_asis()`, we can set levels to the original order.
+
+```{r}
+f <- c(1, 2, 3, 14, 0, 7))
+factor_asis(f)
+```
+
+
