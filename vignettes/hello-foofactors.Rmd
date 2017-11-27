@@ -68,15 +68,16 @@ levels(e)
 ```
 
 ```{r}
-reorder(e)
+f <- reorder(e)
+levels(f)
 ```
 
 
 Usually, we merely want to encode a vector of data as a factor with the order in which they appear in the data. Hence, based on `factor`, I develop a function `factor_asis()`. By `factor_asis()`, we can set levels to the original order.
 
 ```{r}
-f <- c(1, 2, 3, 14, 0, 7)
-factor_asis(f)
+g <- c(1, 2, 3, 14, 0, 7)
+factor_asis(g)
 ```
 
 
