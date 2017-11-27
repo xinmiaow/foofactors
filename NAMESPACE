@@ -3,3 +3,4 @@
 export(detect_fct)
 export(fbind)
 export(freq_out)
+export(reorder)
