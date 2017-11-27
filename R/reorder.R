@@ -15,7 +15,7 @@
 #'
 reorder <- function(x){
 	if (is.factor(x)){
-		desc_unique <- desc(unique(x))
+		desc_unique <- dplyr::desc(unique(x))
 		desc_level <- abs(sort(desc_unique))
 		x_reorder <- factor(x, levels = levels(x)[desc_level])
 		return(x_reorder)
