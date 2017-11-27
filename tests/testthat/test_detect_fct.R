@@ -13,8 +13,8 @@ test_that("detect_fct detect factor: FALSE", {
 	y <- as.factor(c("Apple", "Banana", "Orange", "Cherry"))
 
 
-	expect_identical(detect_fct(x), TRUE)
-	expect_identical(detect_fct(y), TRUE)
+	expect_identical(detect_fct(x), FALSE)
+	expect_identical(detect_fct(y), FALSE)
 })
 
 test_that("detect_fct detect factor: Invaild input", {
