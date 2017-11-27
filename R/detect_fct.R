@@ -22,6 +22,6 @@ detect_fct <- function(x){
 			return(TRUE)
 		}
 	} else{
-		stop("Sorry, this function amis to detect factors. The input you provided is ", class(x))
+		stop("Invaild \'x'\ argument")
 	}
 }
