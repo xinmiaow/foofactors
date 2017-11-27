@@ -17,6 +17,11 @@ Binding two factors via `fbind()`:
 
 ``` r
 library(foofactors)
+#> 
+#> Attaching package: 'foofactors'
+#> The following object is masked from 'package:stats':
+#> 
+#>     reorder
 a <- factor(c("character", "hits", "your", "eyeballs"))
 b <- factor(c("but", "integer", "where it", "counts"))
 ```
@@ -67,4 +72,41 @@ freq_out(x)
 #> 3      c    17
 #> 4      d    17
 #> 5      e    15
+```
+
+Sometimes, character is read as a factor in a wrong way. The unique values of a factor tends to be different from its length; whereas the unique values of character is equal to its length To detect the factor which are supposed to be character, I develop a function `detect_fct()`.
+
+``` r
+c <- as.factor(c("yes", "yes", "no", "yes"))
+detect_fct(c) #return TRUE
+#> [1] TRUE
+```
+
+``` r
+d <- as.factor(c("Apple", "Banana", "Orange", "Cherry"))
+detect_fct(d) #return FALSE
+#> [1] FALSE
+```
+
+To reorder a factor in a decreasing order, I develop function `reorder()`.
+
+``` r
+e <- as.factor(c(21,23,45,64,12,22,3, 4, 4, 4, 4))
+levels(e)
+#> [1] "3"  "4"  "12" "21" "22" "23" "45" "64"
+```
+
+``` r
+f <- reorder(e)
+levels(f)
+#> [1] "64" "45" "23" "22" "21" "12" "4"  "3"
+```
+
+Usually, we merely want to encode a vector of data as a factor with the order in which they appear in the data. Hence, based on `factor`, I develop a function `factor_asis()`. By `factor_asis()`, we can set levels to the original order.
+
+``` r
+g <- c(1, 2, 3, 14, 0, 7)
+factor_asis(g)
+#> [1] 1  2  3  14 0  7 
+#> Levels: 1 2 3 14 0 7
 ```
